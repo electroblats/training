@@ -84,7 +84,7 @@ def main(args):
         cuda = 1
 
     # Set up training optimiser + scheduler + loss fcns and training info tracker
-    optimiser = torch.optim.Adam(network.parameters(), lr=args.learn_rate, weight_decay=1e-3)
+    optimiser = torch.optim.Adam(network.parameters(), lr=args.learn_rate, weight_decay=1e-4)
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimiser, 'min', factor=0.5, patience=10, verbose=True)
     loss_functions = training.LossWrapper(args.loss_fcns, args.pre_filt)
     train_track = training.TrainTrack()
